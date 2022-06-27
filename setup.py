@@ -29,7 +29,7 @@ setup(
     ],
     keywords='web services',
     author='Andrus Kütt',
-    url='https://github.com/andruskutt/wsgirouter3_weasyprint',
+    url='https://github.com/andruskutt/wsgirouter3-weasyprint',
     license='MIT',
     py_modules=['wsgirouter3_weasyprint'],
     python_requires='>=3.7',
