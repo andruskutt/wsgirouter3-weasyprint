@@ -14,6 +14,8 @@ from weasyprint import HTML  # type: ignore
 
 __all__ = ['Pdf', 'PdfConfig', 'install']
 
+_NO_KWARGS: Dict[str, Any] = {}
+
 
 @dataclass
 class PdfConfig:
@@ -26,6 +28,7 @@ class PdfConfig:
 class Pdf:
     html_id: str
     context: Any = None
+    write_pdf_kwargs: Optional[Mapping[str, Any]] = None
     headers: Optional[Mapping[str, str]] = None
 
 
@@ -36,7 +39,7 @@ def _disable_url_fetching(url: str, timeout: int = 10, ssl_context=None) -> NoRe
 def pdf_generator(config: PdfConfig, pdf: Pdf, headers: Dict[str, str]) -> Tuple[bytes]:
     html = config.html_generator(pdf.html_id, pdf.context)
     url_fetcher = config.url_fetcher or _disable_url_fetching
-    response = HTML(string=html, url_fetcher=url_fetcher).write_pdf()
+    response = HTML(string=html, url_fetcher=url_fetcher).write_pdf(**(pdf.write_pdf_kwargs or _NO_KWARGS))
 
     headers['Content-Type'] = 'application/pdf'
     headers['Content-Length'] = str(len(response))
