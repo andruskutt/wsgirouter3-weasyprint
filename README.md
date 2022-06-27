@@ -1,4 +1,4 @@
-# weasyprint plugin for [wsgirouter3](https://github.com/andruskutt/wsgirouter3)
+# [Weasyprint](https://weasyprint.org/) plugin for [wsgirouter3](https://github.com/andruskutt/wsgirouter3)
 
 ## Usage
 
@@ -6,7 +6,10 @@ Configure application to use plugin
 
 ```python
 application = wsgirouter3.WsgiApp(router)
-wsgirouter3_weasyprint.install(application, wsgirouter3_weasyprint.PdfConfig(html_generator=_generator))
+wsgirouter3_weasyprint.install(
+    application,
+    wsgirouter3_weasyprint.PdfConfig(html_generator=_generator)
+)
 ```
 
 Return instance of Pdf from endpoint
