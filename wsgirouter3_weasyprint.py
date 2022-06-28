@@ -1,7 +1,7 @@
 """
 Wsgirouter3 extension for pdf generation using weasyprint.
 
-Homepage: https://github.com/andruskutt/wsgirouter3_weasyprint
+Homepage: https://github.com/andruskutt/wsgirouter3-weasyprint
 
 License: MIT
 """
