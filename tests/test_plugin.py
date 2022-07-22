@@ -17,7 +17,11 @@ def test_pdf_generator():
     config = PdfConfig(html_generator=_gen, default_headers={'X-Def': 'Value'})
 
     headers = {}
-    result = pdf_generator(config, Pdf(used_pdf_id, used_ctx, headers={'X-Loc': 'V2'}), headers)
+    result = pdf_generator(
+        config,
+        Pdf(used_pdf_id, used_ctx, headers={'X-Loc': 'V2'}).write_pdf_with(stylesheets=None),
+        headers
+    )
 
     assert isinstance(result, tuple) and len(result) == 1
     assert headers['Content-Type'] == 'application/pdf'

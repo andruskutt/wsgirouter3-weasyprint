@@ -31,6 +31,10 @@ class Pdf:
     write_pdf_kwargs: Optional[Mapping[str, Any]] = None
     headers: Optional[Mapping[str, str]] = None
 
+    def write_pdf_with(self, **kwargs: Any) -> 'Pdf':
+        self.write_pdf_kwargs = kwargs
+        return self
+
 
 def _disable_url_fetching(url: str, timeout: int = 10, ssl_context=None) -> NoReturn:
     raise NotImplementedError('Url fetching is disabled')
