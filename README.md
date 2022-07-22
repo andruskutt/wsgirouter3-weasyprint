@@ -5,6 +5,10 @@
 Configure application to use plugin
 
 ```python
+def _generator(html_id: str, context: Any) -> str:
+    # your choice of template engine
+
+
 application = wsgirouter3.WsgiApp(router)
 wsgirouter3_weasyprint.install(
     application,
