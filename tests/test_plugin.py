@@ -1,8 +1,15 @@
 """Tests for plugin."""
 
+import pytest
+
 from wsgirouter3 import PathRouter, WsgiApp
 
-from wsgirouter3_weasyprint import Pdf, PdfConfig, install, pdf_generator
+from wsgirouter3_weasyprint import Pdf, PdfConfig, _disable_url_fetching, install, pdf_generator
+
+
+def test__disable_url_fetching():
+    with pytest.raises(NotImplementedError):
+        _disable_url_fetching('http://localhost')
 
 
 def test_pdf_generator():
