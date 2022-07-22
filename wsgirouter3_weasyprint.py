@@ -8,7 +8,10 @@ License: MIT
 
 import functools
 from dataclasses import dataclass
-from typing import Any, Callable, Dict, Mapping, NoReturn, Optional, Tuple
+from typing import Any, Callable, Dict, Mapping, NoReturn, Optional, TYPE_CHECKING, Tuple
+
+if TYPE_CHECKING:
+    import ssl
 
 from weasyprint import HTML  # type: ignore
 
@@ -36,7 +39,7 @@ class Pdf:
         return self
 
 
-def _disable_url_fetching(url: str, timeout: int = 10, ssl_context=None) -> NoReturn:
+def _disable_url_fetching(url: str, timeout: int = 10, ssl_context: 'Optional[ssl.SSLContext]' = None) -> NoReturn:
     raise NotImplementedError('Url fetching is disabled')
 
 
