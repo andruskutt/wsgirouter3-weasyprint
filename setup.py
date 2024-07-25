@@ -1,12 +1,12 @@
 """Setup script."""
 
-import os
+import pathlib
 
 from setuptools import setup
 
 
-with open(os.path.join(os.path.dirname(__file__), 'README.md'), 'r', encoding='utf-8') as f:
-    readme = f.read()
+readme = (pathlib.Path(__file__).parent / 'README.md').read_text(encoding='utf-8')
+install_requires = (pathlib.Path(__file__).parent / 'requirements.txt').read_text(encoding='utf-8').splitlines()
 
 setup(
     name='wsgirouter3_weasyprint',
@@ -20,10 +20,12 @@ setup(
         'License :: OSI Approved :: MIT License',
         'Operating System :: OS Independent',
         'Programming Language :: Python :: 3',
-        'Programming Language :: Python :: 3.7',
+        'Programming Language :: Python :: 3 :: Only',
         'Programming Language :: Python :: 3.8',
         'Programming Language :: Python :: 3.9',
         'Programming Language :: Python :: 3.10',
+        'Programming Language :: Python :: 3.11',
+        'Programming Language :: Python :: 3.12',
         'Topic :: Internet :: WWW/HTTP',
         'Topic :: Internet :: WWW/HTTP :: WSGI :: Application',
     ],
@@ -33,5 +35,6 @@ setup(
     url='https://github.com/andruskutt/wsgirouter3-weasyprint',
     license='MIT',
     py_modules=['wsgirouter3_weasyprint'],
-    python_requires='>=3.7',
+    python_requires='>=3.8',
+    install_requires=install_requires,
 )
